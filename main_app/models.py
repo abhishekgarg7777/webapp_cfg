@@ -15,7 +15,6 @@ class Form(models.Model):
 
 class Question(models.Model):
     name = models.CharField(max_length=100)
-    number = models.IntegerField(default=0)
     form_link = models.ForeignKey(Form,on_delete=models.CASCADE,related_name='question',null=True,blank=True)
     
 class Option(models.Model):
