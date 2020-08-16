@@ -27,4 +27,11 @@ class Question(models.Model):
 
 class Option(models.Model):
     name = models.CharField(max_length=100)
-    question_link = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answer', null=True, blank=True)
+    question_link = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='option', null=True, blank=True)
+
+
+class Answer(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    # form = models.ForeignKey(Form, on_delete=models.CASCADE)
+    question_link = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="question")
+    answer = models.CharField(max_length=200)
