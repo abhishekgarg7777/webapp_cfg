@@ -13,29 +13,38 @@ class Type(models.Model):
 class Project(models.Model):
     user_link = models.ManyToManyField(User)
     name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.name
+    
 
+#f1
+class F1(models.Model):
+    name = models.CharField(max_length=100)
+    bags = models.IntegerField(blank=True)
+    location = models.CharField(max_length=100)
+    vehicle = models.IntegerField(blank=True)
+    trips = models.IntegerField(blank=True)
+    time = models.CharField(max_length=100)
+
+#f2
+class F2(models.Model):
+    name = models.CharField(max_length=100)
+    garbage = models.CharField(max_length=100)
+    bio = models.BooleanField()
+    hazard = models.BooleanField()
+    recycle = models.BooleanField()
 
 class Form(models.Model):
     name = models.CharField(max_length=100)
     project_link = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="projects", null=True, blank=True)
-    def __str__(self):
-        return self.name
 
 
 class Question(models.Model):
     name = models.CharField(max_length=100)
     form_link = models.ForeignKey(Form, on_delete=models.CASCADE, related_name='question', null=True, blank=True)
-    def __str__(self):
-        return self.name
 
 
 class Option(models.Model):
     name = models.CharField(max_length=100)
     question_link = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='option', null=True, blank=True)
-    def __str__(self):
-        return self.name
 
 
 class Answer(models.Model):
