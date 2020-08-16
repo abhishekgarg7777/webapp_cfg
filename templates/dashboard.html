@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+        {% load static %}
+
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="{% static '../static/dashboard.css'%} ">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"> 
+</script> 
+</head>
+<body>
+<div class="main">
+	<h1>Hello Tom</h1>
+	<h2>Dashboard</h2>
+	<div class="chart">
+		<h3>Garbage collections stats through out Year</h3>
+		<canvas id="myChart1"  style="height: 300px; width:80vw"></canvas>
+	</div>
+	<div class='subd'>
+		<div class="chart">
+			<h3>Biodegradable/Non-Biodegradable</h3>
+			<canvas id="myChart4"  style="height: 200px; width: 23.3vw;"></canvas>
+		</div>
+		<div class="chart">
+			<h3>Non-Hazardous/Hazardous</h3>
+			<canvas id="myChart3"  style="height: 200px; width: 23.3vw;"></canvas>
+		</div>
+		<div class="chart">
+			<h3>Recyclabe/Non-Recyclabe</h3>
+			<canvas id="myChart5"  style="height: 200px; width: 23.3vw;"></canvas>
+		</div>
+	</div>
+<!-- 	<div class="chart">
+		<h2>Hazardous/Non-Hazardous</h2>
+		<canvas id="myChart4"  style="height: 200px; width: 40vw;"></canvas>
+	</div> -->
+	<div class="chart">
+		<h2>Waste Segregation</h2>
+		<canvas id="myChart2"  style="height: 200px; width: 80vw;"></canvas>
+	</div>
+</div>
+<script>
+
+
+
+var ctx = document.getElementById('myChart1').getContext('2d');
+var lineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
+    datasets: [
+      {
+        label: "Monthly stats",
+        backgroundColor: [
+                'rgba(54, 162, 235, 0.1)'
+		],
+        borderColor: [
+                'rgba(54, 162, 235, 1)'
+		],
+        data: [10,11,12,13,14,10,9,11,8,7,6,7]
+      }
+    ]
+  }
+});
+
+
+
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Municipal', 'Household', 'E-Waste', 'Agricultural Waste','Industrial Waste','Bio-Medical Waste'],
+        datasets: [{
+            label: '# of Submissions',
+            data: [9, 19, 10, 14,27,5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.1)',
+                'rgba(54, 162, 235, 0.1)',
+                'rgba(255, 206, 86, 0.1)',
+                'rgba(75, 192, 192, 0.1)',
+                'rgba(175, 92, 201, 0.1)',
+                'rgba(150, 123, 23, 0.1)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(175,92, 201, 1)',
+                'rgba(150, 123, 23, 1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+    	responsive:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById('myChart3').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Non-Hazardous', 'Hazardous'],
+        datasets: [{
+            label: '# of Votes',
+            data: [3, 5],
+            backgroundColor: [
+                'rgba(0, 255, 0, 0.6)',
+                'rgba(255,0,0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(0,0, 0, 1)',
+                'rgba(0,0,0,1)'
+            ],
+            borderWidth: .5
+        }]
+    },
+    options: {
+    	responsive:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById('myChart4').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Biodegradable', 'Non-Biodegradable'],
+        datasets: [{
+            label: '# of Votes',
+            data: [9, 6],
+            backgroundColor: [
+                'rgba(0, 255, 0, 0.6)',
+                'rgba(255,0,0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(0,0, 0, 1)',
+                'rgba(0,0,0,1)'
+            ],
+            borderWidth: .5
+        }]
+    },
+    options: {
+    	responsive:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+var ctx = document.getElementById('myChart5').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Recyclable', 'Non-Recyclable'],
+        datasets: [{
+            label: '# of Votes',
+            data: [1, 5],
+            backgroundColor: [
+                'rgba(0, 255, 0, 0.6)',
+                'rgba(255,0,0, 0.6)'
+            ],
+            borderColor: [
+                'rgba(0,0, 0, 1)',
+                'rgba(0,0,0,1)'
+            ],
+            borderWidth: .5
+        }]
+    },
+    options: {
+    	responsive:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

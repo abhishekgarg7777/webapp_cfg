@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% load static %}
+
+    <title>Login Form Design</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1>HOME</h1>
-    <a href="accounts/register" class="btn">REGISTER</a>
-    <a href="accounts/login" class="btn">LOGIN</a>
-    <a href="accounts/logout" class="btn">LOGOUT</a>
+<div class="main">
+    <h1 class="head">CARPE</h1>
+    <p class="info">AN NGO TO MAKE A DIFFERENCE.</p>
+    <a href="accounts/login" class="myButton">Login</a>
+</div>
+
 
 </body>
+
 </html>

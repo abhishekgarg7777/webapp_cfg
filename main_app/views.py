@@ -24,4 +24,8 @@ def questionList(request, id):
     for i in range(ques_list.count()):
         ques.append([ques_list.all()[i], models.Option.objects.all().filter(question_link=ques_list.all()[i]).all()])
         # ques.append(models.Option.objects.all().filter(question_link = i).all())
-    return render(request, "ques_list.html", context={"ques": ques})
+    return render(request, "ques_list.html",
+                  context={"ques": ques, "form_name": models.Form.objects.all().filter(id=id).get()})
+
+def dashboard(request):
+    return render(request, "dashboard.html")

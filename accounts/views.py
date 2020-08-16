@@ -9,7 +9,7 @@ def login(request):
 
         if user is not None :
             auth.login(request,user)
-            return redirect('main_app:demo')
+            return redirect('forms')
         else:
             messages.info(request,'invalid credentials')
             return redirect('login')
