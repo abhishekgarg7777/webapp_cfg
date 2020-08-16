@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{#{{ ques }}#}
+
+
+
+
+{% for que in ques %}
+    {{ que.0 }}
+    {% if que.1.count > 0 %}
+        Multiple choice
+        {% else %}
+        Subjective
+    {% endif %}
+{#    {% for i in  que.1 %}#}
+{#        {{ i }}#}
+{#    {% endfor %}#}
+    <br><br>
+{% endfor %}
+<br>
+
+</body>
+</html>
